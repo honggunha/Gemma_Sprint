@@ -12,11 +12,11 @@ notebook_login()
 ```
 
 ### Installing necessary libraries
-'''
+```
 !pip3 install -q -U transformers==4.38.2
 !pip3 install -q -U datasets==2.18.0
 !pip3 install -q -U bitsandbytes==0.42.0
 !pip3 install -q -U peft==0.9.0
 !pip3 install -q -U trl==0.7.11
 !pip3 install -q -U accelerate==0.27.2
-'''
+```
