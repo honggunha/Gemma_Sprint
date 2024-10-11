@@ -11,7 +11,7 @@ from huggingface_hub import notebook_login
 notebook_login()
 ```
 
-### Installing necessary libraries
+### 1-2. Installing necessary libraries
 ```
 !pip3 install -q -U transformers==4.38.2
 !pip3 install -q -U datasets==2.18.0
@@ -20,3 +20,20 @@ notebook_login()
 !pip3 install -q -U trl==0.7.11
 !pip3 install -q -U accelerate==0.27.2
 ```
+
+### 1-3. Import modules
+```
+import torch
+from datasets import Dataset, load_dataset
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, pipeline, TrainingArguments
+from peft import LoraConfig, PeftModel
+from trl import SFTTrainer
+```
+
+## 2. Preparing the dataset
+### 2-1. Dataset Load
+```
+from datasets import load_dataset
+dataset = load_dataset("llama-duo/gemma2b-coding-eval-by-claude3sonnet")
+```
+You can take the dataset from this link --> (https://huggingface.co/datasets/llama-duo/gemma2b-coding-eval-by-claude3sonnet)
