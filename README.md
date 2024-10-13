@@ -37,3 +37,24 @@ from datasets import load_dataset
 dataset = load_dataset("llama-duo/gemma2b-coding-eval-by-claude3sonnet")
 ```
 You can take the dataset from this link --> (https://huggingface.co/datasets/llama-duo/gemma2b-coding-eval-by-claude3sonnet)
+
+```
+train_data = dataset['gemma2b_coding_gpt4o_100k_by_claude3sonnet']
+```
+
+## 3. Finetuning Gemma
+### 3-1. Adjusting Prompt for learning
+```
+def generate_prompt(example):
+    prompt_list = []
+    for i in range(len(example['instructions'])):
+        prompt_list.append(r"""<bos><start_of_turn>user
+다음 명령에 따라 코드를 작성해 주세요:
+
+{}<end_of_turn>
+<start_of_turn>model
+{}<end_of_turn><eos>""".format(example['instructions'][i], example['target_responses'][i]))
+    return prompt_list
+```
+
+### 3.2 Setting QLoRA
