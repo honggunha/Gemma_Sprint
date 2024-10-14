@@ -58,6 +58,9 @@ def generate_prompt(example):
 ```
 
 ### 3.2 Setting QLoRA
+The model is too big. 
+If you want to run this model on colab environment, you should use qunatization to reduce the size of model.
+
     lora_config = LoraConfig(
     r=6,
     lora_alpha = 8,
