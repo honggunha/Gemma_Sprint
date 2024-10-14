@@ -58,3 +58,16 @@ def generate_prompt(example):
 ```
 
 ### 3.2 Setting QLoRA
+    lora_config = LoraConfig(
+    r=6,
+    lora_alpha = 8,
+    lora_dropout = 0.05,
+    target_modules=["q_proj", "o_proj", "k_proj", "v_proj", "gate_proj", "up_proj", "down_proj"],
+    task_type="CAUSAL_LM",
+    )
+
+    bnb_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=torch.float16
+    )
